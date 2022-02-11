@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import {Grid,Typography} from "@material-ui/core"
+//hooks
+import useStyles from "./styles"
+//components
+import Details from "./components/Details/Details"
+import Main from "./components/Main/Main"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const classes = useStyles()
+    return(
+        <div>
+                <Typography variant={"h3"} style={{textAlign:'center'}}>Track Your Expenses</Typography>
+            <Grid className={classes.grid} container spacing={0} alignItems={"center"} justify={"center"} style={{height:'100vh'}}>
+                <Grid item xs={12} sm={4}>
+                    <Details title={"Income"}/>
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                    <Main />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <Details title={"Expense"}/>
+                </Grid>
+            </Grid>
+        </div>
+    )
 }
 
-export default App;
+export default App
