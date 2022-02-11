@@ -1,7 +1,12 @@
-import React from "react"
+import React,{useContext} from "react"
 import {TextField,Typography,Grid,Button,FormControl,Select,MenuItem,InputLabel} from "@material-ui/core";
 import useStyles from "./styles"
+
+import ExpenseTrackerContext from "../../../context/context"
+
+
 const Form = () => {
+    const {addTransaction} = useContext(ExpenseTrackerContext)
     const classes = useStyles()
     return(
         <div>

@@ -10,7 +10,7 @@ const App = () => {
     const classes = useStyles()
     return(
         <div>
-                <Typography variant={"h3"} style={{textAlign:'center'}}>Track Your Expenses</Typography>
+                {/*<Typography variant={"h3"} style={{textAlign:'center'}}>Track Your Expenses</Typography>*/}
             <Grid className={classes.grid} container spacing={0} alignItems={"center"} justify={"center"} style={{height:'100vh'}}>
                 <Grid item xs={12} sm={4}>
                     <Details title={"Income"}/>
