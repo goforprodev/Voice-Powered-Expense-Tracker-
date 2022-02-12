@@ -7,21 +7,24 @@ import contextReducer from "./contextReducer"
 
 //create an inital-state
 const initalState = []
-const ExpenseTrackerContext = createContext(initalState)
+export const ExpenseTrackerContext = createContext(initalState)
 
 //create a functional component for the provider
-export const Provider = ({children}) => {
+const Provider = ({children}) => {
     //using reducer
     const [transactions,dispatch] = useReducer(contextReducer,initalState)
+
 
     //Action creators remember the dispath takes in actions
     const deleteTransaction = (id) => dispatch({type:"DELETE_TRANSACTION",payload:id})
     const addTransaction = (transactions) => dispatch({type:"ADD_TRANSACTION",payload:transactions})
     return(
         <ExpenseTrackerContext.Provider value={{
-            deleteTransaction,addTransaction
+            deleteTransaction,addTransaction,transactions
         }}>
             {children}
         </ExpenseTrackerContext.Provider>
     )
 }
+
+export default Provider

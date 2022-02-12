@@ -1,5 +1,5 @@
 // Reducer => simply a function that takes in an old state and an action ==> returns a new state
-export const contextReducer = (state,action) => {
+const contextReducer = (state,action) => {
     switch(action.type){
         case "DELETE_TRANSACTION":
             return state.filter(transaction => transaction.id !== action.payload)
@@ -9,3 +9,5 @@ export const contextReducer = (state,action) => {
             return state;
     }
 }
+
+export default contextReducer
