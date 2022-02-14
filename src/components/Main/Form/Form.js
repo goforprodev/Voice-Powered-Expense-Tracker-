@@ -4,17 +4,23 @@ import useStyles from "./styles"
 import {v4 as uuidv4} from "uuid"
 
 import {ExpenseTrackerContext} from "../../../context/context"
+import {incomeCategories,expenseCategories} from "../../../constants/categories"
+//utils
+import formatDate from "../../../utils/formatDate"
+
+
 
 //create an initalstate
 const initialState = {
     amount:'',
     type:'Income',
     category:'',
-    date: new Date()
+    date: formatDate(new Date())
 }
 const Form = () => {
     const {addTransaction} = useContext(ExpenseTrackerContext)
     const [formData,setFormData] = useState(initialState)
+    const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories;
 
     //Create function to createTransactions to be added
     const createTransaction = () => {
@@ -46,8 +52,9 @@ const Form = () => {
                     <FormControl fullWidth>
                         <InputLabel>Category</InputLabel>
                         <Select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})}>
-                            <MenuItem value={"business"}>Business</MenuItem>
-                            <MenuItem value={"salary"}>Salary</MenuItem>
+                            {
+                                selectedCategories.map((c,idx) => (<MenuItem key={idx} value={c.type}>{c.type}</MenuItem>))
+                            }
                         </Select>
                     </FormControl>
                 </Grid>
@@ -60,7 +67,7 @@ const Form = () => {
                 <Grid item xs={6}>
                     <TextField type={"date"} label={"Date"}  fullWidth
                     value={formData.date}
-                    onChange={(e) => setFormData({...formData, date: e.target.value})}
+                    onChange={(e) => setFormData({...formData, date: formatDate(e.target.value)})}
                     />
                 </Grid>
                 <Button className={classes.button} variant={"outlined"} color={"primary"} fullWidth onClick={createTransaction}>
