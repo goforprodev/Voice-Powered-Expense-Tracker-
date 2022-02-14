@@ -15,7 +15,7 @@ const initialState = {
     amount:'',
     type:'Income',
     category:'',
-    date: formatDate(new Date())
+    date: formatDate(new Date("2015-03-25"))
 }
 const Form = () => {
     const {addTransaction} = useContext(ExpenseTrackerContext)
@@ -44,7 +44,7 @@ const Form = () => {
                         <InputLabel>Type</InputLabel>
                         <Select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})}>
                             <MenuItem value={"Income"}>Income</MenuItem>
-                            <MenuItem value={"expense"}>Expense</MenuItem>
+                            <MenuItem value={"Expense"}>Expense</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
@@ -66,7 +66,7 @@ const Form = () => {
                 </Grid>
                 <Grid item xs={6}>
                     <TextField type={"date"} label={"Date"}  fullWidth
-                    value={formData.date}
+                     defaultValue={formatDate(Date.now())}
                     onChange={(e) => setFormData({...formData, date: formatDate(e.target.value)})}
                     />
                 </Grid>

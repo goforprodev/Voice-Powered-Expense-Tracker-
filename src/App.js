@@ -11,7 +11,7 @@ const App = () => {
     return(
         <div>
                 {/*<Typography variant={"h3"} style={{textAlign:'center'}}>Track Your Expenses</Typography>*/}
-            <Grid className={classes.grid} container spacing={0} alignItems={"center"} justify={"center"} style={{height:'100vh'}}>
+            <Grid className={classes.grid} container spacing={0} alignItems={"center"} justifyContent={"center"} style={{height:'100vh'}}>
                 <Grid item xs={12} sm={4}>
                     <Details title={"Income"}/>
                 </Grid>

@@ -12,7 +12,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 //todo: figure out how to integrate chartjs with new version react
 const Details = ({title}) => {
     const {chartData,total}  = useTransactions(title)
-    console.log({total,chartData})
     const classes = useStyles()
     return (
         <div>
